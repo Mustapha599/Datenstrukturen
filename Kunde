@@ -1,0 +1,23 @@
+public class Kunde {
+private String name;
+
+// Konstruktor
+public Kunde(String name) {
+   
+}
+
+// Getter für Nachfolger
+public getNachfolger() {
+    return Kunde;
+}
+
+// Setter für Nachfolger
+public void setNachfolger(Kunde pNf) {
+    Nachfolger = Kunde pNf
+}
+
+// Getter für Name
+public String getName() {
+    return name;
+}
+}
