@@ -1,32 +1,47 @@
-public class WS {
+public class Warteschlange {
+    private Kunde erster;  // Gib den ersten Kunden in der Warteschlange an
 
-// Konstruktor
-public WS() {
-  
-}
+    // Konstruktor
+    public Warteschlange() {
+        erster = null;
+    }
 
-// Einfügen eines Kunden
-public void einfuegen(Kunde pKunde) {
-   
-}
+    // Rückgabe des ersten Kunden
+    public Kunde getErsten() {
+        return erster;
+    }
 
-// Entfernen eines Kunden
-public void entfernen() {
-  
-}
+    // Setzen des ersten Kunden
+    public void setErsten(Kunde pKunde) {
+        erster = pKunde;
+    }
 
-// Getter für ersten Kunden
-public Kunde getErster() {
-    return erster;
-}
+    // Hinzufügen eines Kunden am Ende der Warteschlange
+    public void einfuegen(Kunde pKunde) {
+        if (erster == null) {
+            // Wenn die Warteschlange leer ist, wird der Kunde der erste
+            erster = pKunde;
+        } else {
+            // Sonst zum letzten Kunden führenund den neuen anhängen 
+                Kunde aktueller = erster;
 
-// Setter für ersten Kunden
-public void setErster(Kunde pErster) {
-    Erster =Kunde pErster
-}
+          while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
+                aktueller = aktueller.getNachfolger(); // Nchfolger wird zu aktueller
+            }
+            aktueller.setNachfolger(pKunde); // Mit aktueller.setNachfolger(pKunde) wird der neue Kunde (pKunde) als Nachfolger des letzten Kunden gesetzt.
+        }
+    }
 
-// Prüfen, ob WS leer ist/  prüft, ob die Warteschlange leer ist
-public boolean gibLeer() {
-    return erster == null;
-}
+    // Entfernen des ersten Kunden aus der Warteschlange
+    public void entfernen() {
+        if (erster != null) {
+            // Der Nachfolger des ersten Kunden wird der neue erste
+            erster = erster.getNachfolger();
+        }
+    }
+
+    // Überprüfen, ob die Warteschlange leer ist
+    public boolean gibLeer() {
+        return erster == null;
+    }
 }
