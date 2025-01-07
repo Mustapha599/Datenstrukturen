@@ -1,0 +1,32 @@
+public class WS {
+
+// Konstruktor
+public WS() {
+  
+}
+
+// Einfügen eines Kunden
+public void einfuegen(Kunde pKunde) {
+   
+}
+
+// Entfernen eines Kunden
+public void entfernen() {
+  
+}
+
+// Getter für ersten Kunden
+public Kunde getErster() {
+    return erster;
+}
+
+// Setter für ersten Kunden
+public void setErster(Kunde pErster) {
+    Erster =Kunde pErster
+}
+
+// Prüfen, ob WS leer ist/  prüft, ob die Warteschlange leer ist
+public boolean gibLeer() {
+    return erster == null;
+}
+}
