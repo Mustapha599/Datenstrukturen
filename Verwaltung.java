@@ -8,7 +8,7 @@ public class Verwaltung {
 
         public static void main(String[] args) {
 
-            new verwaltung();
+            new Verwaltung();
             System.out.println("Herzlich willkommen zu Zeichenketten verschluesselerer!");
 
         }
@@ -28,7 +28,7 @@ public class Verwaltung {
 
                     }
                 }else if (option==2){
-                    System.out.println( warteschlange.gibErsten().getName());
+                    System.out.println( warteschlange.giberster().getName());
                     warteschlange.entfernen();
                 }
 

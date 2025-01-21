@@ -1,9 +1,10 @@
-public class warteschlange {
-    public class Warteschlange {
+
+    public class warteschlange {
         private Kunde erster;  // Gib den ersten Kunden in der Warteschlange an
 
+
         // Konstruktor
-        public Warteschlange() {
+        public warteschlange() {
             erster = null;
         }
 
@@ -47,4 +48,4 @@ public class warteschlange {
         }
     }
 
-}
+

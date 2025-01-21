@@ -1,4 +1,4 @@
-public class Kunde {
+
     public class Kunde {
         private String name;       // Name des Kunden
         private Kunde nachfolger;  // nächster Kunden
@@ -36,4 +36,4 @@ public class Kunde {
         }
     }
 
-}
+
