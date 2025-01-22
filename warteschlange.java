@@ -1,6 +1,7 @@
 
-    public class warteschlange {
+    public class warteschlange<T> {
         private Kunde erster;  // Gib den ersten Kunden in der Warteschlange an
+
 
 
         // Konstruktor
