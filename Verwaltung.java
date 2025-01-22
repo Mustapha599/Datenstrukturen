@@ -1,9 +1,8 @@
 import java.util.Scanner;
-public class Verwaltung {
 
 
 
-    public class verwaltung {
+    public class Verwaltung {
         private Scanner scanner;
 
         public static void main(String[] args) {
@@ -12,7 +11,7 @@ public class Verwaltung {
             System.out.println("Herzlich willkommen zu Zeichenketten verschluesselerer!");
 
         }
-        public verwaltung(){
+        public Verwaltung(){
             scanner = new Scanner(System.in);
             warteschlange warteschlange= new warteschlange();
             while (true) {
@@ -28,11 +27,11 @@ public class Verwaltung {
 
                     }
                 }else if (option==2){
-                    System.out.println( warteschlange.giberster().getName());
+                    System.out.println( warteschlange.getErsten());
                     warteschlange.entfernen();
                 }
 
             }
         }
     }
-}
+
