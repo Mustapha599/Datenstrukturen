@@ -1,6 +1,7 @@
 
-    public class warteschlange<T> {
-        private Kunde erster;  // Gib den ersten Kunden in der Warteschlange an
+    public class warteschlange <T>{
+        private Kunde erster;// Gib den ersten Kunden in der Warteschlange an
+        private Knoten erster;
 
 
 
@@ -23,9 +24,13 @@
         public void einfuegen(Kunde pKunde) {
             if (erster == null) {
                 // Wenn die Warteschlange leer ist, wird der Kunde der erste
-                erster = pKunde;
+                erster = T  pKunde;
+
+
+
+
             } else {
-                // Sonst zum letzten Kunden führenund den neuen anhängen
+                // Sonst zum letzten Kunden führen und den neuen anhängen
                 Kunde aktueller = erster;
 
                 while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
@@ -45,6 +50,7 @@
 
         // Überprüfen, ob die Warteschlange leer ist
         public boolean gibLeer() {
+
             return erster == null;
         }
     }
