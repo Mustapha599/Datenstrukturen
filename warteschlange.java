@@ -49,10 +49,54 @@
         }
 
         // Überprüfen, ob die Warteschlange leer ist
-        public boolean gibLeer() {
+        public boolean gibLeer() 
 
             return erster == null;
         }
     }
 
+———————————————————————————————————————————————————————————————————————
+public class Warteschlange<T> {
+    private Knoten<T> erster; // Erster Knoten in der Warteschlange
 
+    // Konstruktor: Erstellt eine leere Warteschlange
+    public Warteschlange() {
+        erster = null;
+    }
+
+    // Gibt das erste Element in der Warteschlange zurück (ohne es zu entfernen)
+    public T gibErsten() {
+        if (erster == null) {
+            return null; // Warteschlange ist leer
+        }
+        return erster.getZeigeAuf();
+    }
+
+    // Entfernt das erste Element aus der Warteschlange
+    public void entfernen() {
+        if (erster != null) {
+            erster = erster.getNachfolger(); // Nächster Knoten wird der erste
+        }
+    }
+
+    // Fügt ein neues Element am Ende der Warteschlange hinzu
+    public void einfuegen(T pObjekt) {
+        Knoten<T> neuerKnoten = new Knoten<>(pObjekt); // Neuer Knoten wird erstellt
+        neuerKnoten.setNachfolger(null); // Neuer Knoten hat keinen Nachfolger
+
+        if (erster == null) {
+            erster = neuerKnoten; // Neuer Knoten wird der erste, wenn Warteschlange leer
+        } else {
+            Knoten<T> aktueller = erster; // Start bei erstem Knoten
+            while (aktueller.getNachfolger() != null) {
+                aktueller = aktueller.getNachfolger(); // Gehe zum letzten Knoten
+            }
+            aktueller.setNachfolger(neuerKnoten); // Neuer Knoten wird am Ende hinzugefügt
+        }
+    }
+
+    // Überprüft, ob die Warteschlange leer ist
+    public boolean istLeer() {
+        return erster == null; // Gibt true zurück, wenn Warteschlange leer
+    }
+}
