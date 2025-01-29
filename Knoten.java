@@ -1,24 +1,23 @@
 public class Knoten<T> {
-    // Generische Klasse, die einen Knoten repräsentiert. Jeder Knoten speichert ein Element und zeigt auf einen Nachfolger.
+    private T zeigeAuf;                             //Speichert das Objekt auf welches der Knoten zeigt
+    private Knoten nachfolger;                      //Speichert den nachfolgenden Knoten
 
-    public T zeigeAuf; // Speichert das Objekt, auf das dieser Knoten zeigt (Dateninhalt des Knotens).
-    private Knoten nachfolger; // Verweist auf den nächsten Knoten in der Kette.
-
-    // Konstruktor: Initialisiert einen neuen Knoten mit dem angegebenen Objekt.
-    public Knoten(T pZeigeAuf){
-        zeigeAuf = pZeigeAuf; // Setzt das übergebene Objekt als Dateninhalt.
+    public Knoten(T pZeigeAuf)
+    {
+        zeigeAuf = pZeigeAuf;
+        nachfolger = null;
     }
-
-    
-    public Knoten getNachfolger(){
-        return nachfolger; // Gibt den Verweis auf den nächsten Knoten zurück.
+    public Knoten getNachfolger()
+    {
+        return nachfolger;
     }
-
-    .
-    public void setNachfolger(Knoten pNachfolger){
-        this.nachfolger = pNachfolger; // Verbindet diesen Knoten mit dem übergebenen Nachfolger.
+    public void setNachfolger(Knoten pNachfolger)
+    {
+        this.nachfolger = pNachfolger;
     }
+    public T getZeigeAuf()
+    {
+        return zeigeAuf;
+    }
+}
 
-    // Getter-Methode: Liefert das Objekt zurück, auf das dieser Knoten zeigt.
-    public T getZeigeAuf(){
-        return zeigeAuf; // Gibt den gespeicherten Dateninhalt 
