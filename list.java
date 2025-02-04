@@ -1,4 +1,4 @@
-import jdk.jfr.ContentType;
+
 public class list <A>{
     public A  first;
     public A last;
@@ -8,8 +8,8 @@ public class list <A>{
 
     }
 //Einfuegen hinten
-public void append(ContentType pC){
-    Node hilfe = new Knoten(ContentType pC);
+public void append(A pC){
+    Node hilfe = new Knoten(A pC);
     if (first == null) {
         // Wenn die Warteschlange leer ist, wird der Kunde der erste
         erster = (Node) hilfe;
@@ -28,7 +28,7 @@ public void next(){
 
 }
 //Einfuegen zwischen
-public void insert(ContentType pC){
+public void insert(A pC){
 
 }
 
@@ -48,11 +48,11 @@ public boolean hasAccess(){
 
     return false;
 }
-public ContentType getContent(){
+public A getContent(){
 
     return null;
 }
-public void setContent(ContentType pC){
+public void setContent(A pC){
 
 }
 }
