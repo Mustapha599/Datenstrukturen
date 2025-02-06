@@ -46,7 +46,7 @@ public class list <A> {
             }
         }
         public void current () {
-
+        return current;
         }
         public void toLast () {
 

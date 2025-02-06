@@ -18,6 +18,7 @@ public class Verwaltung {
             System.out.println("== HAUPTMENÜ ==");
             System.out.println("[1]Hinzufuegen");
             System.out.println("[2]Ersten Auslesen");
+            System.out.println("[3]stack-ersten Auslesen");
             int option = scanner.nextInt();
             if(option==1) {
                 System.out.println("Wie viele sollen hinzufügt werden ?");
@@ -26,6 +27,11 @@ public class Verwaltung {
                 Kunde hilf = new Kunde("Mustapha");
                 warteschlange.einfuegen(hilf);
             }else if (option==2){
+                System.out.println("------Kundenname---------- ");
+                Kunde hilfe = (Kunde)warteschlange.getErsten();
+                System.out.println(hilfe.getName());
+                warteschlange.entfernen();
+            }else if (option==3){
                 System.out.println("------Kundenname---------- ");
                 Kunde hilfe = (Kunde)warteschlange.getErsten();
                 System.out.println(hilfe.getName());

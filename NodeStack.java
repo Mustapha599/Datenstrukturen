@@ -1,22 +1,7 @@
 public class NodeStack <E>{
-    public NodeStack(E pContent){
 
-    }
-public E getContent(){
 
-    return null;
-}
-public void setContent(E pContent){
 
-}
-public NodeStack getNextNode(){
-        return null;
-}
-public void setNextNode(NodeStack nextNode){
-
-    }
-}
------------------
     private E content;
     private Node<E> nextNode;
 
@@ -45,4 +30,5 @@ public void setNextNode(NodeStack nextNode){
     public void setNextNode(Node<E> nextNode) {
         this.nextNode = nextNode;
     }
+}
 }
