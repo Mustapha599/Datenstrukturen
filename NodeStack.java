@@ -1,12 +1,10 @@
 public class NodeStack <E>{
 
-
-
     private E content;
     private Node<E> nextNode;
 
     // Konstruktor
-    public Node(E pContent) {
+    public NodeStack(E pContent) {
         this.content = pContent;
         this.nextNode = null;
     }

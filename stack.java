@@ -6,7 +6,7 @@ public class stack <E> {
         return content;
     }
     public void einfuegen(E content){
-        Node<E> newNode = new Node<>(content);// Erstellt einen neuen Knoten, der auf das aktuelle oberste Element zeigt
+        Node<E> newNode = new Node(content);// Erstellt einen neuen Knoten, der auf das aktuelle oberste Element zeigt
         newNode.setNextNode(erster);
         erster = newNode;
     }
