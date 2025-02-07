@@ -20,5 +20,8 @@ public class Node <A>{
         {
             return zeigeAuf;
         }
+
+    public void setNextNode(Knoten erster) {
     }
+}
 
