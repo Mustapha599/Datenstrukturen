@@ -1,4 +1,4 @@
-public class Node <A>{
+public class listNode <A>{
 
         private A zeigeAuf;                             //Speichert das Objekt auf welches der Knoten zeigt
         private Node nachfolger;                      //Speichert den nachfolgenden Knoten
