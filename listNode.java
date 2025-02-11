@@ -1,18 +1,18 @@
 public class listNode <A>{
 
         private A zeigeAuf;                             //Speichert das Objekt auf welches der Knoten zeigt
-        private Node nachfolger;                      //Speichert den nachfolgenden Knoten
+        private Knoten nachfolger;                      //Speichert den nachfolgenden Knoten
 
-        public Node(A pZeigeAuf)
+        public listNode(A pZeigeAuf)
         {
             zeigeAuf = pZeigeAuf;
             nachfolger = null;
         }
-        public Node getNachfolger()
+        public Knoten getNachfolger()
         {
             return nachfolger;
         }
-        public void setNachfolger(Node pNachfolger)
+        public void setNachfolger(Konten pNachfolger)
         {
             this.nachfolger = pNachfolger;
         }

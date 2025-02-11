@@ -41,7 +41,7 @@ public class list <A> {
             last = newNode;
         } else if (hasAccess()) {
             // Neues Element vor dem aktuellen einfügen
-            newNode.setNext(current);
+            newNode.setNextNode(current);
             if (current == first) {
                 first = newNode; // Falls es das erste Element ist, wird "first" neu gesetzt
             } else {
@@ -50,7 +50,7 @@ public class list <A> {
                 while (hilfe.getNext() != current) {
                     hilfe = hilfe.getNext();
                 }
-                hilfe.setNext(newNode);// Verbindet den vorherigen Knoten mit dem neuen
+                hilfe.setNextNode(newNode.getNachfolger());// Verbindet den vorherigen Knoten mit dem neuen
             }
         }
     }
