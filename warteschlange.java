@@ -1,49 +1,65 @@
-public class warteschlange<T> {
-    // Gib den ersten Kunden in der Warteschlange an
+public class warteschlange<T>{
     private Knoten erster;
-
-    // Konstruktor
-    public warteschlange() {
+    private Knoten letzter;
+    /*
+     * Konstruktor
+     * Erstellt leere Queue
+     */
+    public warteschlange(){
         erster = null;
     }
 
-    // Rückgabe des ersten Kunden
-    public T getErsten() {
-        return (T)erster.getZeigeAuf(); //erster.getZeigeAuf();
+    private Knoten gibLetzten(){
+        return letzter;
     }
 
-    // Setzen des ersten Kunden
-    public void setErsten(Knoten pKnoten) {
-        erster = pKnoten;
+    /*
+     * Gibt das erste Objekt der Queue zurück
+     */
+    public T gibErsten(){
+        return (T)erster.getZeigeAuf();
     }
-
-    // Hinzufügen eines Knoten am Ende der Warteschlange
-    public void einfuegen(T pInhalt) {
-        Knoten hilfe = new Knoten(pInhalt);
-        if (erster == null) {
-            // Wenn die Warteschlange leer ist, wird der Kunde der erste
-            erster = hilfe;
-        } else {
-            // Sonst zum letzten Kunden führen und den neuen anhängen
-            Knoten aktueller = erster;
-
-            while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
-                aktueller = aktueller.getNachfolger(); // Nachfolger wird zu aktueller
-            }
-            aktueller.setNachfolger(hilfe); // Mit aktueller.setNachfolger(pKnoten) wird der neue Knoten (pKnoten) als Nachfolger des letzten Knoten gesetzt.
-        }
-    }
-
-    // Entfernen des ersten Kunden aus der Warteschlange
-    public void entfernen() {
-        if (erster != null) {
-            // Der Nachfolger des ersten Kunden wird der neue erste
+    /*
+     * Ertfernt das erste Objekt aus der Queue
+     */
+    public void getErsten(){
+        if( erster.getNachfolger()!= null){
             erster = erster.getNachfolger();
         }
     }
+    /*
+     * Fügt ein neues Element am Ende der Queue hinzu
+     */
+    public void queue (T pKunde) {
+        Knoten aktuellerKunde = erster;
+        Knoten neuerKunde = new Knoten(pKunde);
+        neuerKunde.setNachfolger(null);
+        if (erster == null) {
+            erster = neuerKunde;
+        } else {
+            while (aktuellerKunde.getNachfolger() != null) {
+                aktuellerKunde = aktuellerKunde.getNachfolger();
+            }
+            aktuellerKunde.setNachfolger(neuerKunde);
+        }
+    }
+    public void enqueue (T pKunde) {
+        Knoten neuerKnoten = new Knoten(pKunde);
+        neuerKnoten.setNachfolger(null);
+        if (letzter != null) {
+            letzter.setNachfolger(neuerKnoten);
+            letzter = neuerKnoten;
 
-    // Überprüfen, ob die Warteschlange leer ist
-    public boolean gibLeer() {
-        return erster == null;
+        } else {
+            erster = neuerKnoten;
+            letzter = neuerKnoten;
+        }
+    }
+
+    public void dequeue() {
+        Knoten aktuellerKunde = erster;
+        if ( erster != null) {
+            erster = aktuellerKunde.getNachfolger();
+        }
     }
 }

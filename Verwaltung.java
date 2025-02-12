@@ -2,74 +2,121 @@ import java.util.Scanner;
 
 public class Verwaltung {
     private Scanner scanner;
+    private list<Kunde> warteschlange;
+    private list<Getraenk> getraenkeListe;
+    private list<Rechnung> rechnungsListe;
 
     public static void main(String[] args) {
         new Verwaltung();
-        System.out.println("Herzlich willkommen zu Zeichenketten-Verschlüsseler!");
     }
 
     public Verwaltung() {
         scanner = new Scanner(System.in);
-        // Erstellen der Warteschlange mithilfe der List
-        list<Kunde> warteschlange = new list<>();
+        warteschlange = new list<>();
+        getraenkeListe = new list<>();
+        rechnungsListe = new list<>();
+        fuelleKaffeeListeAuf();
 
         while (true) {
             System.out.println("== HAUPTMENÜ ==");
-            System.out.println("[1] Hinzufügen");
-            System.out.println("[2] Ersten Auslesen und Entfernen");
-            System.out.println("[3] Gesamte Liste anzeigen");
+            System.out.println("[1] Kunde hinzufügen");
+            System.out.println("[2] Bestellung bearbeiten");
+            System.out.println("[3] Warteschlange anzeigen");
             System.out.println("[4] Beenden");
             int option = scanner.nextInt();
+            scanner.nextLine();
 
             if (option == 1) {
-                // Hinzufügen von Elementen zur Warteschlange
-                System.out.println("Wie viele Kunden sollen hinzugefügt werden?");
-                int anzahl = scanner.nextInt();
-                scanner.nextLine(); // Zeilenumbruch nach nextInt() abfangen
-
-                for (int i = 0; i < anzahl; i++) {
-                    System.out.print("Name des Kunden #" + (i + 1) + ": ");
-                    String name = scanner.nextLine();
-                    Kunde neuerKunde = new Kunde(name);
-                    warteschlange.einfuegen(neuerKunde); // Neuen Kunden ans Ende der Liste anhängen
-                }
-                System.out.println(anzahl + " Kunde(n) erfolgreich hinzugefügt!");
-
+                kundeHinzufuegen();
             } else if (option == 2) {
-                // Ersten Kunden auslesen und entfernen
-                if (!warteschlange.isEmpty()) {
-                    warteschlange.toFirst(); // Gehe zum ersten Element
-                    Kunde ersterKunde = warteschlange.getContent();
-                    System.out.println("Erster Kunde: " + ersterKunde.getName());
-                    warteschlange.remove(); // Entfernt den ersten Kunden aus der Liste
-                } else {
-                    System.out.println("Die Warteschlange ist leer.");
-                }
-
+                bearbeiteBestellung();
             } else if (option == 3) {
-                // Gesamte Warteschlange anzeigen
-                if (!warteschlange.isEmpty()) {
-                    System.out.println("Inhalt der Warteschlange:");
-                    warteschlange.toFirst(); // Gehe zum ersten Element
-                    while (list.hasAccess()) {
-                        Kunde aktuellerKunde = list.getContent();
-                        System.out.println("- " + aktuellerKunde.getName());
-                        warteschlange.next(); // Zum nächsten Kunden gehen
-                    }
-                } else {
-                    System.out.println("Die Warteschlange ist leer.");
-                }
-
+                zeigeWarteschlange();
             } else if (option == 4) {
-                // Programm beenden
                 System.out.println("Programm wird beendet. Auf Wiedersehen!");
                 break;
-
             } else {
                 System.out.println("Ungültige Option. Bitte erneut versuchen.");
             }
         }
-
         scanner.close();
     }
+
+    private void kundeHinzufuegen() {
+        System.out.print("Name des Kunden: ");
+        String name = scanner.nextLine();
+        System.out.print("Gewünschtes Getränk (Cappuccino, Kaffee, FlatWhite, Matcha): ");
+        String wunschGetraenk = scanner.nextLine();
+        Kunde neuerKunde = new Kunde(name, wunschGetraenk);
+        warteschlange.append(neuerKunde);
+
+        System.out.println("Kunde " + name + " wurde zur Warteschlange hinzugefügt.");
+    }
+
+    private void bearbeiteBestellung() {
+        if (!warteschlange.isEmpty() && !getraenkeListe.isEmpty()) {
+            warteschlange.toFirst();
+            Kunde kunde = warteschlange.getContent();
+            Getraenk bestelltesGetraenk = null;
+
+            getraenkeListe.toFirst();
+            while (getraenkeListe.hasAccess()) {
+                if (getraenkeListe.getContent().getName().equals(kunde.getWunschGetraenk())) {
+                    bestelltesGetraenk = getraenkeListe.getContent();
+                    break;
+                }
+                getraenkeListe.next();
+            }
+
+            if (bestelltesGetraenk != null) {
+                getraenkeListe.remove();
+                Rechnung rechnung = new Rechnung("20.02.2025", rechnungsListe.isEmpty() ? 1 : rechnungsListe.getContent().getrechnungsnr() + 1, 5);
+                kunde.setRechnung(rechnung);
+                rechnungsListe.append(rechnung);
+                kunde.setGetraenkErhalten(true);
+                System.out.println("Bestellung für " + kunde.getName() + " wurde bearbeitet.");
+                warteschlange.remove();
+            } else {
+                System.out.println("Gewünschtes Getränk nicht verfügbar. Bitte füllen Sie die Liste auf.");
+            }
+        } else {
+            System.out.println("Keine Kunden oder keine Getränke verfügbar.");
+        }
+    }
+
+    private void zeigeWarteschlange() {
+
+        // Gesamte Warteschlange anzeigen
+        if (!warteschlange.isEmpty()) {
+            System.out.println("Inhalt der Warteschlange:");
+            warteschlange.toFirst(); // Gehe zum ersten Element
+
+            while (warteschlange.hasAccess()) { // Solange ein Element vorhanden ist
+                Kunde aktuellerKunde = warteschlange.getContent(); // Holt das aktuelle Element
+                if (aktuellerKunde != null) {
+                    System.out.println("- " + aktuellerKunde.getName() + " (Bestellt: " + aktuellerKunde.getWunschGetraenk() + ")");
+                }
+                warteschlange.next(); // Springe zum nächsten Kunden
+            } System.out.println(this.warteschlange.getContent());
+        }
+
+        else {
+            System.out.println("Die Warteschlange ist leer.");
+        }
+    }
+    private void fuelleKaffeeListeAuf() {
+        getraenkeListe.append(new Getraenk("Cappuccino"));
+        getraenkeListe.append(new Getraenk("Kaffee"));
+        getraenkeListe.append(new Getraenk("FlatWhite"));
+        getraenkeListe.append(new Getraenk("Matcha"));
+    }
+
+
 }
+
+
+
+
+
+
+

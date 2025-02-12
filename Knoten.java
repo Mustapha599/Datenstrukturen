@@ -7,17 +7,21 @@ public class Knoten<T> {
         zeigeAuf = pZeigeAuf;
         nachfolger = null;
     }
+
     public Knoten getNachfolger()
     {
         return nachfolger;
     }
+
     public void setNachfolger(Knoten pNachfolger)
     {
         this.nachfolger = pNachfolger;
     }
+
     public T getZeigeAuf()
     {
         return zeigeAuf;
     }
+
 }
 
