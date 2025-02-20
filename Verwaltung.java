@@ -45,7 +45,7 @@ public class Verwaltung {
     private void kundeHinzufuegen() {
         System.out.print("Name des Kunden: ");
         String name = scanner.nextLine();
-        System.out.print("Gewünschtes Getränk (Cappuccino, Kaffee, FlatWhite, Matcha): ");
+        System.out.print("Gewünschtes Getränk (Cappuccino, Kaffee, FlatWhite, ColdBrew): ");
         String wunschGetraenk = scanner.nextLine();
         Kunde neuerKunde = new Kunde(name, wunschGetraenk);
         warteschlange.append(neuerKunde);
@@ -105,18 +105,11 @@ public class Verwaltung {
         }
     }
     private void fuelleKaffeeListeAuf() {
-        getraenkeListe.append(new Getraenk("Cappuccino"));
-        getraenkeListe.append(new Getraenk("Kaffee"));
-        getraenkeListe.append(new Getraenk("FlatWhite"));
-        getraenkeListe.append(new Getraenk("Matcha"));
+        getraenkeListe.append(new Getraenk("Cappuccino",3));
+        getraenkeListe.append(new Getraenk("Kaffee",2));
+        getraenkeListe.append(new Getraenk("FlatWhite",4));
+        getraenkeListe.append(new Getraenk("ColdBrew",2));
     }
 
 
 }
-
-
-
-
-
-
-
