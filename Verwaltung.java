@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Verwaltung {
     private Scanner scanner;
-    private list<Kunde> warteschlange;
+    private warteschlange<Kunde> warteschlange;
     private list<Getraenk> getraenkeListe;
-    private list<Rechnung> rechnungsListe;
+    private stack<Rechnung> rechnungsListe;
 
     public static void main(String[] args) {
         new Verwaltung();
@@ -12,9 +12,9 @@ public class Verwaltung {
 
     public Verwaltung() {
         scanner = new Scanner(System.in);
-        warteschlange = new list<>();
+        warteschlange = new warteschlange<>();
         getraenkeListe = new list<>();
-        rechnungsListe = new list<>();
+        rechnungsListe = new stack<>();
         fuelleKaffeeListeAuf();
 
         while (true) {
@@ -22,6 +22,7 @@ public class Verwaltung {
             System.out.println("[1] Kunde hinzufügen");
             System.out.println("[2] Bestellung bearbeiten");
             System.out.println("[3] Warteschlange anzeigen");
+            System.out.println("[4] Rechnung erhalten");
             System.out.println("[4] Beenden");
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -33,6 +34,8 @@ public class Verwaltung {
             } else if (option == 3) {
                 zeigeWarteschlange();
             } else if (option == 4) {
+               getrechnung();
+            } else if (option == 5) {
                 System.out.println("Programm wird beendet. Auf Wiedersehen!");
                 break;
             } else {
@@ -84,6 +87,12 @@ public class Verwaltung {
         }
     }
 
+    private void getrechnung(){
+       System.out.println(getbetrag()&getrechnungsnr());
+
+
+    }
+
     private void zeigeWarteschlange() {
 
         // Gesamte Warteschlange anzeigen
@@ -104,6 +113,7 @@ public class Verwaltung {
             System.out.println("Die Warteschlange ist leer.");
         }
     }
+
     private void fuelleKaffeeListeAuf() {
         getraenkeListe.append(new Getraenk("Cappuccino",3));
         getraenkeListe.append(new Getraenk("Kaffee",2));
