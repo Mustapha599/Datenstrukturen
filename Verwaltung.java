@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import utils.*;
 
 public class Verwaltung {
     private Scanner scanner;
