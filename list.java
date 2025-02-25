@@ -17,6 +17,7 @@ public class list <A> {
             // Wenn die Liste leer ist, wird das Element als erstes gesetzt
             first = newNode;
             last = newNode;
+
         } else {
             // Hängt das neue Element ans Ende
             last.setNachfolger(newNode);// Verbindet das aktuelle letzte Element mit dem neuen Knoten
@@ -46,7 +47,7 @@ public class list <A> {
                 first = newNode; // Falls es das erste Element ist, wird "first" neu gesetzt
             } else {
                  // Sucht das Element vor "current", um den Zeiger anzupassen
-                listNode<A> hilfe = first;
+                listNode<A> hilfe = current;
                 while (hilfe.getNachfolger() != current) {
                     hilfe = hilfe.getNachfolger();
                 }

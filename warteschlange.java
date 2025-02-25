@@ -30,19 +30,7 @@ public class warteschlange<T>{
     /*
      * Fügt ein neues Element am Ende der Queue hinzu
      */
-    public void queue (T pKunde) {
-        Knoten aktuellerKunde = erster;
-        Knoten neuerKunde = new Knoten(pKunde);
-        neuerKunde.setNachfolger(null);
-        if (erster == null) {
-            erster = neuerKunde;
-        } else {
-            while (aktuellerKunde.getNachfolger() != null) {
-                aktuellerKunde = aktuellerKunde.getNachfolger();
-            }
-            aktuellerKunde.setNachfolger(neuerKunde);
-        }
-    }
+
     public void enqueue (T pKunde) {
         Knoten neuerKnoten = new Knoten(pKunde);
         neuerKnoten.setNachfolger(null);
